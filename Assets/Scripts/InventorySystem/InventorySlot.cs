@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
+    public event Action<int> OnSlotSelected; 
     [SerializeField] private DraggableItem _prefabDraggable;
     private int _inventoryIndex;
     private InventorySO _inventory;
-
+    
     private void OnDestroy()
     {
         _inventory.OnInventoryUpdated -= OnInventoryUpdate;
@@ -45,7 +46,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         if (index != _inventoryIndex) return;
 
-        if (_inventory.Items[_inventoryIndex] == null) 
+        if (_inventory.Items[_inventoryIndex] == null)
             RemovedItem();
         else
         {
@@ -58,5 +59,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         var newDraggable = Instantiate(_prefabDraggable, transform);
         newDraggable.SetItem(_inventory.Items[_inventoryIndex]);
         newDraggable.SetInventorySlot(this);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnSlotSelected?.Invoke(_inventoryIndex);
     }
 }

@@ -10,10 +10,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     private Image _image;
     private InventorySlot _slot;
     public ItemSO Item => _item;
-    private void Awake()
-    {
-        _image = GetComponent<Image>();
-    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -46,6 +42,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     public void SetItem(ItemSO item)
     {
         _item = item;
+        if(!_image) _image = GetComponent<Image>();
         _image.sprite = _item.Icon;
     }
 }

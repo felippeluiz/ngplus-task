@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Machine gun
   m_EditorClassIdentifier: 
   _itemName: Machine gun
+  _description: "Designed for war, now it\u2019s just another way to mow down monsters
+    in your path."
   _icon: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  _description: Could be used to clean the lawn, now seems good to kill some monsters
+  _dropped: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}

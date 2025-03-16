@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Sickle
   m_EditorClassIdentifier: 
   _itemName: Sickle
+  _description: "Meant for the fields, but it\u2019ll carve through monsters just
+    as easily."
   _icon: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  _description: Could be used to clean the lawn, now seems good to kill some monsters
+  _dropped: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
