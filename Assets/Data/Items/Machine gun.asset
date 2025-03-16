@@ -18,3 +18,8 @@ MonoBehaviour:
     in your path."
   _icon: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   _dropped: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _equipped: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _projectile: {fileID: -1327499133, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _fireRate: 5
+  _projectLifetime: 3
+  _projectSpeed: 10

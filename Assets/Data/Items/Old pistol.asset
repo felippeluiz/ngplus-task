@@ -18,3 +18,8 @@ MonoBehaviour:
     jam when monsters come knocking."
   _icon: {fileID: -353751291, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   _dropped: {fileID: -353751291, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _equipped: {fileID: -353751291, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _projectile: {fileID: -537537479, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _fireRate: 2
+  _projectLifetime: 2
+  _projectSpeed: 9

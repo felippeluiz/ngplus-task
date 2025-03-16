@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject _selectedItem;
     [SerializeField] private TextMeshProUGUI _itemName, _itemDescription;
     [SerializeField] private ItemDropper _dropper;
+    [SerializeField] private PlayerGun _playerEquipment;
 
     private int _selectedIndex=-1;
     void Awake()
@@ -32,13 +34,15 @@ public class InventoryManager : MonoBehaviour
     public void OnPressDrop()
     {
         if(_selectedIndex<0 || _inventory.Items[_selectedIndex]==null) return;
+        _playerEquipment.DroppedItem(_inventory.Items[_selectedIndex]);
         _dropper.DropItem(_inventory.Items[_selectedIndex]);
         _inventory.RemoveItem(_selectedIndex);
     }
 
     public void OnPressEquip()
     {
-        
+        if(_selectedIndex<0 || _inventory.Items[_selectedIndex]==null) return;
+        _playerEquipment.EquipItem(_inventory.Items[_selectedIndex]);
     }
 
     public void OnSelectSlot(int indexSlot)
