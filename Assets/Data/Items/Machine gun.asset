@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b696ba85a80744886ab72bd47de0e7, type: 3}
   m_Name: Machine gun
   m_EditorClassIdentifier: 
+  _itemID: 1
   _itemName: Machine gun
   _description: "Designed for war, now it\u2019s just another way to mow down monsters
     in your path."

@@ -9,11 +9,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     [SerializeField] private DraggableItem _prefabDraggable;
     private int _inventoryIndex;
     private InventorySO _inventory;
+    private DraggableItem _myDraggable;
     
-    private void OnDestroy()
-    {
-        _inventory.OnInventoryUpdated -= OnInventoryUpdate;
-    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -25,6 +22,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         }
 
         _inventory.Items[_inventoryIndex] = draggableItem.Item;
+        _myDraggable = draggableItem;
     }
 
     public void StartSlot(InventorySO inventory, int index)
@@ -40,6 +38,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     public void RemovedItem()
     {
         _inventory.Items[_inventoryIndex] = null;
+        _myDraggable = null;
+    }
+
+    private void DroppedItem()
+    {
+        Destroy(_myDraggable.gameObject);
+        _myDraggable = null;
     }
 
     private void OnInventoryUpdate(int index)
@@ -47,7 +52,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         if (index != _inventoryIndex) return;
 
         if (_inventory.Items[_inventoryIndex] == null)
-            RemovedItem();
+            DroppedItem();
         else
         {
             AddedItem();
@@ -59,6 +64,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         var newDraggable = Instantiate(_prefabDraggable, transform);
         newDraggable.SetItem(_inventory.Items[_inventoryIndex]);
         newDraggable.SetInventorySlot(this);
+        _myDraggable = newDraggable;
+    }
+    
+    private void OnDestroy()
+    {
+        _inventory.OnInventoryUpdated -= OnInventoryUpdate;
     }
 
     public void OnPointerClick(PointerEventData eventData)

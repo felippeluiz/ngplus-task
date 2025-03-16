@@ -9,7 +9,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject _inventoryVisual;
     [SerializeField] private GameObject _selectedItem;
     [SerializeField] private TextMeshProUGUI _itemName, _itemDescription;
-    
+    [SerializeField] private ItemDropper _dropper;
+
+    private int _selectedIndex=-1;
     void Awake()
     {
         _inventory.InitializeInventory(_slots.Length);
@@ -24,11 +26,14 @@ public class InventoryManager : MonoBehaviour
     public void OnPressInventoryButton()
     {
         _inventoryVisual.SetActive(!_inventoryVisual.activeSelf);
+        _selectedItem.SetActive(false);
     }
 
     public void OnPressDrop()
     {
-        
+        if(_selectedIndex<0 || _inventory.Items[_selectedIndex]==null) return;
+        _dropper.DropItem(_inventory.Items[_selectedIndex]);
+        _inventory.RemoveItem(_selectedIndex);
     }
 
     public void OnPressEquip()
@@ -38,15 +43,16 @@ public class InventoryManager : MonoBehaviour
 
     public void OnSelectSlot(int indexSlot)
     {
-        if (_inventory.Items[indexSlot] == null)
+        _selectedIndex = indexSlot;
+        if (_inventory.Items[_selectedIndex] == null)
         {
             _selectedItem.SetActive(false);
             return;
         }
         else
         {
-            _itemName.text = _inventory.Items[indexSlot].ItemName;
-            _itemDescription.text = _inventory.Items[indexSlot].Description;
+            _itemName.text = _inventory.Items[_selectedIndex].ItemName;
+            _itemDescription.text = _inventory.Items[_selectedIndex].Description;
             _selectedItem.SetActive(true);
         }
     }
@@ -57,5 +63,7 @@ public class InventoryManager : MonoBehaviour
         {
             _slots[i].OnSlotSelected -= OnSelectSlot;
         }
+        
+        _inventory.SaveInventory();
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b696ba85a80744886ab72bd47de0e7, type: 3}
   m_Name: Shovel
   m_EditorClassIdentifier: 
+  _itemID: 4
   _itemName: Shovel
   _description: "Built for digging, but in a pinch, it\u2019ll do just fine for burying
     monsters instead."

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b696ba85a80744886ab72bd47de0e7, type: 3}
   m_Name: Old pistol
   m_EditorClassIdentifier: 
+  _itemID: 2
   _itemName: Old pistol
   _description: "Once a trusted sidearm, now old and rusty\u2014just hope it doesn\u2019t
     jam when monsters come knocking."

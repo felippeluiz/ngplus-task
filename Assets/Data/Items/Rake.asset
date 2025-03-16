@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b696ba85a80744886ab72bd47de0e7, type: 3}
   m_Name: Rake
   m_EditorClassIdentifier: 
+  _itemID: 3
   _itemName: Rake
   _description: Could be used to clean the lawn, now seems good to kill some monsters
   _icon: {fileID: -703694536, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}

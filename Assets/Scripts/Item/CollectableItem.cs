@@ -11,7 +11,7 @@ public class CollectableItem : MonoBehaviour
 
     private void Awake()
     {
-        _spriteRenderer.sprite = _item.Dropped;
+        SetSprite();
     }
 
     public void ChangeOnRangeToCollect(bool isOnRange)
@@ -21,6 +21,17 @@ public class CollectableItem : MonoBehaviour
 
     private void Update()
     {
-        _spriteRenderer.transform.Rotate(Vector3.up,_rotateSpeed*Time.deltaTime);
+        _spriteRenderer.transform.Rotate(Vector3.up, _rotateSpeed * Time.deltaTime);
+    }
+
+    public void SetItem(ItemSO item)
+    {
+        _item = item;
+        SetSprite();
+    }
+
+    private void SetSprite()
+    {
+        _spriteRenderer.sprite = _item.Dropped;
     }
 }

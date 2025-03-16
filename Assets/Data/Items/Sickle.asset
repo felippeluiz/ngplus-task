@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b696ba85a80744886ab72bd47de0e7, type: 3}
   m_Name: Sickle
   m_EditorClassIdentifier: 
+  _itemID: 5
   _itemName: Sickle
   _description: "Meant for the fields, but it\u2019ll carve through monsters just
     as easily."
